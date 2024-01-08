@@ -1,0 +1,5 @@
+{
+    "require": {
+        "open-telemetry/opentelemetry-auto-psr18": "^1.0"
+    }
+}

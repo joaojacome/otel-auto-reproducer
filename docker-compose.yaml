@@ -1,0 +1,23 @@
+version: '3'
+
+services:
+  with-extension-autoload-enabled:
+    build: .
+    command: ['php', 'main.php']
+    environment:
+      - OTEL_PHP_AUTOLOAD_ENABLED=true
+  with-extension-autoload-disabled:
+    build: .
+    command: ['php', 'main.php']
+    environment:
+      - OTEL_PHP_AUTOLOAD_ENABLED=false
+  without-extension-autoload-enabled:
+    build: .
+    command: ['sh', '-c', 'rm /usr/local/etc/php/conf.d/docker-php-ext-opentelemetry.ini; php main.php']
+    environment:
+      - OTEL_PHP_AUTOLOAD_ENABLED=true
+  without-extension-autoload-disabled:
+    build: .
+    command: ['sh', '-c', 'rm /usr/local/etc/php/conf.d/docker-php-ext-opentelemetry.ini; php main.php']
+    environment:
+      - OTEL_PHP_AUTOLOAD_ENABLED=false
